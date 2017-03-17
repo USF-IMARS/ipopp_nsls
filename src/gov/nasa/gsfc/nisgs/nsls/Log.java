@@ -513,9 +513,10 @@ public class Log {
   {
     public void run () 
     {
+      LogEvent event = null;
       while (true) 
       {
-      	LogEvent event = (LogEvent) toLog.get();
+      	event = (LogEvent) toLog.get();
       	if (event == null)
       	{
       	  // Shutdown...
