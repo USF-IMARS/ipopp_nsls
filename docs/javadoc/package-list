@@ -1,0 +1,7 @@
+gov.nasa.gsfc.nisgs.nsls
+gov.nasa.gsfc.nisgs.nsls.console
+gov.nasa.gsfc.nisgs.nsls.filter
+gov.nasa.gsfc.nisgs.nsls.message
+gov.nasa.gsfc.nisgs.nsls.server
+gov.nasa.gsfc.nisgs.nsls.test
+gov.nasa.gsfc.nisgs.nsls.util

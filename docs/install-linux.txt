@@ -1,0 +1,132 @@
+NSLS INSTALLATION
+-----------------
+
+
+Install Java (if not already installed)
+---------------------------------------
+
+If you plan to rebuild the NSLS distribution, install the Java Development
+Kit (JDK).  Otherwise, only the Java Runtime Environment (JRE) needs to be
+installed.  Both are available at java.sun.com.  The most recent release is
+preferred with V1.5.0 as a minimum.
+
+
+
+Make sure that Java applications can be executed
+------------------------------------------------
+
+The "bin" directory of the JRE (or SDK) must be added to the beginning of the
+PATH environment variable so the "java" executable can be executed (and the
+"javac" and "javadoc" executables if you're going to rebuild).  Ensuring that
+the "bin" directory is at the beginning of the PATH environment variable
+prevents some other Java distribution from being used (such as the Java that
+ships with some operating systems).
+
+
+
+Copy the NSLS distribution to the desired location
+--------------------------------------------------
+
+The "nsls-<version>.zip" file (where <version> is the version number)
+contains, at the top-level, a directory named "nsls".  In the desired
+directory  (typically "drl") copy "nsls-<version>.zip" and enter
+"unzip nsls-<version>.zip".  This will create the "nsls" directory in that
+directory.  All directory paths referred to in these instructions are
+relative to the "nsls" directory.
+
+
+
+*******************************************************************************
+***   IF YOU'RE ONLY USING THE NSLS CONSOLE, SKIP TO "Create launcher".   *****
+*******************************************************************************
+
+
+
+Configure the NSLS Server and the Java Service Wrapper
+------------------------------------------------------
+
+The NSLS Server is run as a service using the Java Service Wrapper.  The
+Java Service Wrapper is configured by editing "./jsw/conf/nsls-server.conf"
+as described in "docs/configs-format.txt".
+
+Also, depending on whether a 32-bit or 64-bit operating system is being used,
+use
+
+  ./config-jsw.sh 32
+
+or
+
+  ./config-jsw.sh 64
+
+respectively, to further configure the Java Service Wrapper (JSW) for the
+computer architecture.
+
+
+
+Start the NSLS Server automatically at boot (if desired)
+--------------------------------------------------------
+
+The NSLS Server can be started at boot.  In /etc/rc.local add:
+
+su - <user> -c "<path>/jsw/bin/nsls-server.sh start"
+
+where <user> is the user the NSLS Server will run as and <path> is the
+absolute path of the "nsls" directory.  Don't run the NSLS Server as "root".
+
+
+
+Start the NSLS Server manually (if desired)
+-------------------------------------------
+
+The NSLS Server can be started, restarted, or stopped at any time
+from a shell by entering "<path>/jsw/bin/nsls-server.sh <cmd>" where <path>
+is the absolute path of the NISGS installation directory and <cmd> is "start",
+"restart", or "stop" (without the double-quotes).  This must be done as the
+same user that originally started the NSLS Server.
+
+
+
+Troubleshooting
+---------------
+
+Log files for the Java Service Wrapper are in "./jsw/logs".  They should
+be examined if the NSLS Server doesn't appear to be running.
+
+
+
+Rebuilding.
+
+If you find it necessary to rebuild the NSLS distribution use
+
+  ./build.sh
+  
+to compile the Java source files and create the "nsls.jar" file in the "lib"
+directory.  Then use
+
+  ./build_javadoc.sh
+  
+to create the javadoc documentation in the "javadoc" directory.
+
+
+
+Create launcher
+---------------
+
+Optionally, create a desktop launcher to run the NSLS Console.  The creation
+of launchers varies between the different flavors of Linux and their desktop
+environments.  In all cases the command line described below to execute the
+NSLS Console will apply.
+
+
+
+Execute the NSLS Console
+------------------------
+
+Double-click the NSLS Console launcher.  Or, if a launcher isn't being
+used, while in the "nsls" directory enter
+
+  ./bin/nsls-console.sh
+
+followed by any command line arguments as described in
+"console-users-guide.txt".
+

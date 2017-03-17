@@ -1,0 +1,122 @@
+NSLS INSTALLATION
+-----------------
+
+
+Install Java (if not already installed)
+---------------------------------------
+
+If you plan to rebuild the NSLS distribution, install the Java Development
+Kit (JDK).  Otherwise, only the Java Runtime Environment (JRE) needs to be
+installed.  Both are available at java.sun.com.  The most recent release is
+preferred with V1.5.0 as a minimum.
+
+
+
+Make sure that Java applications can be executed
+------------------------------------------------
+
+The "java" executable will have been installed in "C:\WINDOWS\system32"
+(on XP systems).  If a different "java" executable is to be used, the "bin"
+directory of its JRE (or JDK) must be added to the beginning of the PATH
+environment variable (ie. before "C:\WINDOWS\system32").  If you plan to
+rebuild the NSLS distribution, the "bin" directory of the JDK must be added
+to the beginning to the PATH environment variable so that the "javac" and
+"javadoc" executables can be executed.
+
+
+
+Copy the NSLS distribution to the desired location
+--------------------------------------------------
+
+The "nsls-<version>.zip" file (where <version> is the version number)
+contains, at the top-level, a directory named "nsls".  Extract/copy the "nsls"
+directory to the desired location (typically a directory named "drl" perhaps
+in "C:\Program Files").  All directory paths referred to in these instructions
+are relative to the "nsls" directory.
+
+
+
+*******************************************************************************
+***   IF YOU'RE ONLY USING THE NSLS CONSOLE, SKIP TO "Create shortcut".   *****
+*******************************************************************************
+
+
+
+Configure the NSLS Server and the Java Service Wrapper
+------------------------------------------------------
+
+The NSLS Server is run as a service using the Java Service
+Wrapper.  The Java Service Wrapper is configured by editing
+".\jsw-Windows\conf\nsls-server.conf" as described in
+".\docs\configs-format.txt".
+
+
+
+Install the NSLS Server as a Windows service
+--------------------------------------------
+
+In the ".\jsw-Windows\bin" directory, double-click "InstallNSLSServer-NT.bat".
+This will install the NSLS Server to be started automatically when
+Windows boots.  To modify how the NSLS Server is installed, use the
+"Services" windows found at "Control Panel > Administrative Tools > Services".
+It will now contain a service named "NSLS Server".  Using the "Service"
+window, the Simulcast Services can be started/stopped.  Whether or not the
+Simulcast Services automatically start at boot can also be specified.
+
+To uninstall the NSLS Server, first stop the NSLS Server and then
+double-click "UninstallNSLSServer-NT.bat" in the ".\jsw-Windows\bin" directory.
+
+
+
+Troubleshooting
+---------------
+
+Log files for the Java Service Wrapper are in "./jsw-Windows/logs".  They
+should be examined if the NSLS Server doesn't appear to be running.
+
+
+
+Rebuilding
+----------
+
+If you find it necessary to rebuild the NSLS distribution use
+
+  .\build.bat
+  
+to compile the Java source files and create the "nsls.jar" file in the "lib"
+directory.  Then use
+
+  .\build_javadoc.bat
+  
+to create the javadoc documentation in the "javadoc" directory.
+
+
+
+Create shortcut
+---------------
+
+Optionally, create a shortcut to run the NSLS Console.
+
+a) In the ".\bin" directory, right-click the "nsls-console.bat" file and
+   select "Create Shortcut".
+b) Move the shortcut to the desired location (eg. the Desktop).
+c) Rename the shortcut "NSLS Console".
+d) Right-click the shortcut and select "Properties".  Command line arguments
+   can be added at the end of the "Target:" field if desired (after the
+   absolute path for console.bat).  They are described in
+   "client-arguments.txt".  Modify the "Start in:" field to be the absolute
+   path of the "nsls" directory.  Change the "Run:" selection to "Minimized".
+
+
+
+Execute the NSLS Console
+------------------------
+
+Double-click the NSLS Console shortcut.  Or, if a shortcut isn't being
+used, while in the "nsls" directory enter
+
+  .\bin\nsls-console.sh
+
+followed by any command line arguments as described in
+"console-users-guide.txt".
+

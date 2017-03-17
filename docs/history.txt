@@ -1,0 +1,19 @@
+V1.2    8-Feb-06  First external release.
+V1.3   14-Mar-06  Adjustable column widths.  Copy/paste from event lines.
+V1.3a  14-Apr-06  Changed to port number 3500.
+V1.4    9-Jun-06  Added RT-STPS as a source.
+V1.5   23-Aug-06  Debug tweaks.  More robust handling of socket connections.
+V1.5a  20-Sep-06  Increased "server ready" interval and timeout.
+V1.5b  25-Sep-06  Added processing monitor.
+V1.5.2 29-Nov-06  Changed version format for Windows Installer.
+V1.5.3 11-Dec-06  More tweaks in an attempt to solve the CLOSE_WAIT condition.
+V1.5.4  1-Feb-07  Changes for installation as a Windows service using the
+                  Advanced Installer.
+V1.5.5 21-Feb-07  More accurate handling of start/stop times in log files.
+                  More flexible limiting of log files.
+V1.5.6 06-Jun-07  Added processingMonitor to to console.
+                  Changed window proportional size to absolute size.
+                  Changed satellite name location and color.
+                  Added LST product to NSLS processing monitor.
+                  Added LST GeoTIFF to processing monitor.
+

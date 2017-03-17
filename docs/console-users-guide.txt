@@ -1,0 +1,239 @@
+NSLS Console User's Guide
+
+0. Introduction
+
+The NSLS Console is used to view events that occur in the NISGS.  It can be
+used in a playback mode or in a live mode.  In playback mode events of interest
+are displayed that match specified filters.  In live mode events are displayed
+as they occur.  Filters may also be specified when in live mode.
+
+From top to bottom, the NSLS Console contains a menu bar, event listing, event
+panel or filters panel (or neither), and status bar.
+
+00. Command Line Arguments.
+
+The NSLS Console takes the following command line arguments.
+
+  host:port
+  
+     A NSLS Server address to automatically connect to (optional).
+
+1. Menu Bar
+
+1.1. File
+
+1.1.1. Connect...
+
+Displays a dialog in which the NSLS Server to connect to may be specified.
+
+1.1.2. Disconnect
+
+Disconnects from the current NSLS Server.
+
+1.1.3. Exit
+
+Exits the NSLS Console.
+
+1.2. Help
+
+1.2.1. About NSLS...
+
+Displays a dialog showing the version numbers of the NSLS Console and Server.
+
+1.3. UTC Clock
+
+Displays the UTC time of the machine the NSLS Console is running on.
+
+2. Event Listing
+
+The event listing displays NISGS events one per line.  Clicking on one of the
+events will cause the details for that event to be displayed in the event panel
+(possibly replacing the filters panel).
+
+2.1. Details indicator
+
+The first column (which doesn't have a heading) will contain an indicator when
+the details for that event are being shown in the event panel.
+
+2.2. Date/Time
+
+The UTC date/time when the event occurred (using the clock on the machine the
+event occurred on).
+
+2.3. Host/Source
+
+The machine the event occurred on and the NISGS subsystem that generated the
+event.
+
+2.4. Summary
+
+A text summary of the event.
+
+2.5. Start Live Mode Button
+
+Starts live mode.
+
+2.6. Stop Live Mode Button
+
+Stops live mode (entering play mode).
+
+2.7. Filters Panel Button
+
+Displays the filters panel (possibly replacing the event panel).  The filters
+panel button will "blick" when filters are being applied but the filters panel
+is not being displayed.
+
+2.8. Erase Listing Button
+
+Erases the current event listing.
+
+2.9. Toggle Auto-Scroll Button
+
+Toggles whether or not the event listing automatically scrolls as new events
+are received.
+
+3. Filters Panel
+
+The filters panel is used to specify event filters used in both playback and
+live mode.  For an event to be displayed it must pass each filter selected.
+For some types of filter multiple instances may be specified.  If so, an event
+must pass each instance to be displayed.  Each filter contains a "Not" checkbox
+which, if selected, causes the negation of the filter to be applied.  Each
+filter also contains a delete button which deletes the filter so that it is no
+longer applied.
+
+3.1. Level Filter Button
+
+Displays a level filter.
+
+3.2. Source Filter Button
+
+Displays a source filter.
+
+3.3. Date/Time Filter Button
+
+Displays a date/time filter.
+
+3.4. Text Filter Button
+
+Displays a text filter.
+
+3.5. Close Filter Panel Button
+
+Closes the filter panel.  Note that this does not delete the filters.
+
+3.6. Count Filter
+
+The count filter is always present and specifies the maximum number of events
+that may be displayed in the event listing before the oldest events are
+discarded.
+
+3.7. Level Filter
+
+The level filter specifies the event severity of interest: informational,
+warning, and/or error.
+
+3.8. Source Filter
+
+The source filter specifies the event source of interest: MMS, DSM, NCS, IS,
+and/or SC.
+
+3.9. Date/Time Filter
+
+The date/time filter specifies the date/time range of interest.  A "Set To..."
+drop-down is provided to conveniently select commonly used date/time ranges.
+
+3.10. Text Filter
+
+The text filter specifies a text string of interest.  The "Text Field Only"
+checkbox specifies whether or not only the event's text field is considered
+or the entire textual representation of the event.
+
+4. Event Panel
+
+The event panel displays the details of a selected event.
+
+4.1. Previous Event Button
+
+Displays the previous event's details in the event panel.
+
+4.2. Next Event Button
+
+Displays the next event's details in the event panel.
+
+4.3. Save Event Button
+
+Prompts for a file in which to save the event details.
+
+4.4. Close Event Panel Button
+
+Closes the event panel.
+
+4.5. Level
+
+The severity level of the event.
+
+4.6. Date/time
+
+The date/time the event occurred (on the machine it occurred on).
+
+4.7. Source
+
+The NISGS subsystem that generated the event.
+
+4.8. Parameters
+
+Parameters specific to the subsystem/event that further define the event.
+
+4.9. Host
+
+The machine that the event occurred on.
+
+4.10. Thread
+
+The Java thread that was executing when the event occurred.
+
+4.11. Stack
+
+The Java stack trace when the event occurred.
+
+4.12. Throwable
+
+The Java throwable (eg. exception) that triggered the event.  This only applies
+to error-level events.
+
+4.13. Text
+
+Text generated by the subsystem to descibed the event.
+
+5. Status Bar
+
+The status bar indicates whether the current mode is playback or live as well
+as the connection status to the NSLS Server.
+
+5.1. Playback Mode
+
+5.1.1. Play Button
+
+Queries the NSLS Server for the events that pass the specified filters.
+
+5.1.2. Stop Button
+
+Stops a query in progress.
+
+5.1.3. Status
+
+Shows the status of the most recent playback query.
+
+5.2. Live Mode
+
+5.2.1. Status
+
+Shows the number of events received since live mode was started (and the
+number of event discarded because they failed a filter).
+
+5.3. Connection Status
+
+The NSLS Server currently connected to (or not).
+
+

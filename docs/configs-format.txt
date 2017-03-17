@@ -1,0 +1,21 @@
+1. Java Service Wrapper, nsls-server.conf
+
+wrapper.app.parameter.3
+The limit on how many log events will be kept before the oldest events are
+discarded.  This may be specified as a time interval or by disk usage.  The
+syntax for a time interval is a count followed 'm' (minutes), 'h' (hours),
+or 'd' (days).  For example, 72h is 72 hours.  The syntax for limiting by
+disk usage is a count following by 'kb' (kilobytes), 'mb' (megabytes), or
+'gb' (gigabytes).  For example, 10mb is 10 megabytes.
+
+wrapper.app.parameter.4
+The port number that the NSLS Server listens on for connections from clients
+(eg. clients wishing to log events or the NSLS Console).
+
+wrapper.app.parameter.5
+The path of a directory which will contain the NSLS log files (and only
+NSLS log files).  The path can either be absolute or relative to the NSLS
+installation (the "nsls" directory).
+
+
+
