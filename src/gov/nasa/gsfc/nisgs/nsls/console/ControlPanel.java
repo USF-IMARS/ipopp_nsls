@@ -1077,8 +1077,7 @@ public class ControlPanel extends JFrame {
     		}
           }
           else if (ae.getActionCommand() == "Add"){
-        	  Object[] selectedtilelist_str=fulllist.getSelectedValues();
-        	  ArrayList selectedtilelist=new ArrayList(Arrays.asList(selectedtilelist_str));//(List)fulllist.getSelectedValues();
+        	  ArrayList selectedtilelist = new ArrayList(fulllist.getSelectedValuesList());
         	  DefaultListModel updatedselectionlist=(DefaultListModel)selectionlist.getModel();
         	  //DefaultListModel updatedfulllist=(DefaultListModel)fulllist.getModel();
         	  
@@ -1117,8 +1116,7 @@ public class ControlPanel extends JFrame {
         	  }
           }
           else if (ae.getActionCommand() == "Remove"){
-        	  Object[] selectedtilelist_str=selectionlist.getSelectedValues();
-        	  List selectedtilelist=new ArrayList(Arrays.asList(selectedtilelist_str));//(List)selectionlist.getSelectedValues();
+        	  List selectedtilelist = new ArrayList(selectionlist.getSelectedValuesList());
         	  DefaultListModel updatedselectionlist=(DefaultListModel)selectionlist.getModel();
         	  //DefaultListModel updatedfulllist=(DefaultListModel)fulllist.getModel();
         	  String selectedtile;
