@@ -54,7 +54,7 @@ import java.io.*;
 * 
 ******************************************************************************/
 
-public class Log {
+public class Log implements AutoCloseable{
   private HostPort logServerAddr;
   private String tmpDir;
   private File[] logFiles;
@@ -70,6 +70,7 @@ public class Log {
   private Thread toLogThread = null;
   private Thread toServerThread = null;
   private static final int MAX_TMP_FILES = 0;
+  private boolean closed = false;
   /****************************************************************************
   * An information event.
   ****************************************************************************/
@@ -170,7 +171,6 @@ public class Log {
     {
       host = null;
     }
-    Runtime.getRuntime().addShutdownHook(new ShutdownHook());
   }
   /****************************************************************************
   * Sets whether or not log events are written to "standard output" as lines
@@ -818,29 +818,37 @@ public class Log {
       }
     }
   }
-	/****************************************************************************
-	* ShutdownHook.
-	****************************************************************************/
-	private class ShutdownHook extends Thread {
-		public void run () {
-			if (toLog != null) {
-				toLog.put(null);
-				while (true) {
-					if (!toLogThread.isAlive()) {
-						break;
-					}
-					Util.sleep(0.100);
-				}
-			}
-			if (toServer != null) {
-				toServer.put(null);
-				while (true) {
-					if (!toServerThread.isAlive()) {
-						break;
-					}
-					Util.sleep(0.100);
-				}
-			}
-		}
-	}
+
+  @Override
+  public void finalize() throws Throwable{
+    super.finalize();
+    if (!closed) {
+      // To avoid call Log.close() when done or do a try-with-resources
+      System.out.println(
+              "Log finalizing before Log.close(). You might be leaking memory."
+      );
+    }
+  }
+
+  public void close(){
+    if (toLog != null) {
+      toLog.put(null);
+      while (true) {
+        if (!toLogThread.isAlive()) {
+          break;
+        }
+        Util.sleep(0.100);
+      }
+    }
+    if (toServer != null) {
+      toServer.put(null);
+      while (true) {
+        if (!toServerThread.isAlive()) {
+          break;
+        }
+        Util.sleep(0.100);
+      }
+    }
+    closed=true;
+  }
 }
