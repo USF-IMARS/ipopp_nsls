@@ -16,6 +16,7 @@ All rights reserved.
 package gov.nasa.gsfc.nisgs.nsls.util;
 import javax.swing.*;
 
+@SuppressWarnings("unchecked")
 public class CustomCombo extends JComboBox {
   private static final long serialVersionUID = 1L;
   /****************************************************************************

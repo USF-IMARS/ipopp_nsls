@@ -23,6 +23,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+@SuppressWarnings("unchecked")
 public class Console extends JFrame {
   protected static JFrame frame;
   protected static ServerHandler serverHandler = null;

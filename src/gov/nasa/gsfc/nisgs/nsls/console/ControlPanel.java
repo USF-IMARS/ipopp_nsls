@@ -51,7 +51,7 @@ import  org.w3c.dom.Node;
 import  org.w3c.dom.Element;
 import  org.w3c.dom.NodeList;
 
-
+@SuppressWarnings("unchecked")
 public class ControlPanel extends JFrame {
     // States the control panel can be in
     private enum PanelMode {
