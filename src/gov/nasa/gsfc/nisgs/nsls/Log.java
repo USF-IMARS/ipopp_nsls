@@ -833,21 +833,9 @@ public class Log implements AutoCloseable{
   public void close(){
     if (toLog != null) {
       toLog.put(null);
-      while (true) {
-        if (!toLogThread.isAlive()) {
-          break;
-        }
-        Util.sleep(0.100);
-      }
     }
     if (toServer != null) {
       toServer.put(null);
-      while (true) {
-        if (!toServerThread.isAlive()) {
-          break;
-        }
-        Util.sleep(0.100);
-      }
     }
     closed=true;
   }
